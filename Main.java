@@ -26,13 +26,6 @@ import java.awt.Toolkit;
         model.update();
         view.repaint();
         Toolkit.getDefaultToolkit().sync();
-        /*try
-			{
-				Thread.sleep(10);
-			} catch(Exception e) {
-				e.printStackTrace();
-				System.exit(1);
-            }*/
     }
 }
 
@@ -40,17 +33,10 @@ import java.awt.Toolkit;
 public class Main{
     static Graphics g;
     public static void main(String[] args){
-       // Model m = new Model();
-       // m.createRandomParticles(2);
-        //System.out.println("Tests");
-        //View view = new View(m);
-        //g = view.getGraphics();
         Game game = new Game();
         
         while(true){
             game.update();
-            //model.draw(g);
-            //view.repaint();
             
         }
     }
