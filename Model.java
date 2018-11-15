@@ -7,13 +7,15 @@ import java.lang.Math;
 public class Model{
 
     ArrayList<Particle> particles;
-    boolean eat = true;
+    boolean eat = false;
+    boolean firstParticleMoves = false;
+    boolean gravity = true;
     public Model(){
         particles = new ArrayList<Particle>();
 
     }
     public void createParticle(float x, float y, double mass){
-        //System.out.println("x: " + x + ", y: " + y + ", mass: " + mass);
+        
         particles.add(new Particle(particles.size(), x, y, mass));
     }
     public void createRandomParticles(int size){
@@ -26,6 +28,8 @@ public class Model{
             int y = ran.nextInt(500);
             double mass = (double)ran.nextInt(10) + 5;
             createParticle((float)x, (float)y, mass);
+            if(count == 0 && firstParticleMoves)
+                particles.get(0).x_vel = (float)0.02;
             count++;
         }
         //count++;
@@ -46,12 +50,13 @@ public class Model{
         int size = particles.size();
         for(int x = 0; x < size; x++){
             for(int y = 0; y < size; y++){
-                particles.get(x).gravity(particles.get(y));
+                if(gravity)
+                    particles.get(x).gravity(particles.get(y));
                 //if(particles.get(x).collision(particles.get(y))){System.out.println("Collision!!!");}
             }
-            particles.get(x).update();
+           
         }
-        for(int x = 0; x < size; x++){ 
+        for(int x = 0; x < size; x++){
             for(int y = 0; y < size; y++){
                 //System.out.println("x: " + x + ", y: " +y);
                 if(particles.get(x).collision(particles.get(y))){
@@ -113,7 +118,7 @@ public class Model{
                    //System.out.println("Collision!!!");
                 }
             }
-            
+            particles.get(x).update();
         }
         for(int x = 0; x < size; x++)
         {

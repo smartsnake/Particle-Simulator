@@ -4,9 +4,10 @@ import javax.swing.SwingUtilities;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 
+// Updated 11/14/2018
  class Game extends JFrame
 {
-    int numberOfParticals = 100;
+    int numberOfParticals = 50;
     Model model;
     View view;
     public Game(){
