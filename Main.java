@@ -5,31 +5,6 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 
 // Updated 11/14/2018
- class Game extends JFrame
-{
-    int numberOfParticals = 50;
-    Model model;
-    View view;
-    public Game(){
-        model = new Model();
-        model.createRandomParticles(numberOfParticals);
-        view = new View(model);
-
-        this.setTitle("Particles!");
-		this.setSize(900, 600);
-		this.setFocusable(true);
-		this.getContentPane().add(view);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-
-    }
-    public void update(){
-        model.update();
-        view.repaint();
-        Toolkit.getDefaultToolkit().sync();
-    }
-}
-
 
 public class Main{
     static Graphics g;
